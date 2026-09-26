@@ -45,7 +45,7 @@ export default function Hero() {
     el.appendChild(current);
     let timeoutId: ReturnType<typeof setTimeout>;
 
-    function step() {
+    const step = () => {
       if (lineIdx >= LINES.length) {
         current.innerHTML += '<span class="terminal-caret"></span>';
         return;
@@ -60,10 +60,10 @@ export default function Hero() {
         lineIdx++;
         charIdx = 0;
         current = document.createElement("div");
-        el!.appendChild(current);
+        el.appendChild(current);
         timeoutId = setTimeout(step, line.text ? 220 : 60);
       }
-    }
+    };
     timeoutId = setTimeout(step, 350);
 
     return () => clearTimeout(timeoutId);
