@@ -28,21 +28,22 @@ export default function Hero() {
   useEffect(() => {
     const el = termRef.current;
     if (!el) return;
+    const container: HTMLDivElement = el;
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (reduce) {
-      el.innerHTML = LINES.map(
+      container.innerHTML = LINES.map(
         (l) => `<div class="${l.cls}">${l.text || "&nbsp;"}</div>`
       ).join("");
       return;
     }
 
-    el.innerHTML = "";
+    container.innerHTML = "";
     let lineIdx = 0;
     let charIdx = 0;
     let current = document.createElement("div");
-    el.appendChild(current);
+    container.appendChild(current);
     let timeoutId: ReturnType<typeof setTimeout>;
 
     const step = () => {
@@ -60,7 +61,7 @@ export default function Hero() {
         lineIdx++;
         charIdx = 0;
         current = document.createElement("div");
-        el.appendChild(current);
+        container.appendChild(current);
         timeoutId = setTimeout(step, line.text ? 220 : 60);
       }
     };

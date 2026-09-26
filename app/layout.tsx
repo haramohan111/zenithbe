@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { AuthProvider } from "@/components/AuthContext";
+// The global stylesheet is loaded by Next.js; its type declaration is provided at build time.
+// @ts-expect-error Next.js handles CSS side-effect imports without a local declaration.
 import "./globals.css";
 
 const fraunces = Fraunces({
