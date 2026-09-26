@@ -11,7 +11,7 @@ const LINES: Line[] = [
   { text: "$ zenithbe apply --course=data --duration=6mo", cls: "prompt" },
   { text: "> matching mentor...", cls: "dim" },
   { text: "> project scoped: customer churn dashboard", cls: "dim" },
-  { text: "> status: accepted \u2713", cls: "ok" },
+  { text: "> status: accepted ✓", cls: "ok" },
 ];
 
 function CheckIcon() {
@@ -60,7 +60,9 @@ export default function Hero() {
         lineIdx++;
         charIdx = 0;
         current = document.createElement("div");
-        el.appendChild(current);
+        if (el) {
+          el.appendChild(current);
+        }
         timeoutId = setTimeout(step, line.text ? 220 : 60);
       }
     }
