@@ -60,9 +60,7 @@ export default function Hero() {
         lineIdx++;
         charIdx = 0;
         current = document.createElement("div");
-        if (el) {
-          el.appendChild(current);
-        }
+        el!.appendChild(current);
         timeoutId = setTimeout(step, line.text ? 220 : 60);
       }
     }
